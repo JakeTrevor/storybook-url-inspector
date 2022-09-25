@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-url-inspector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Inspect URLs when they are modified by components",
   "keywords": [
     "storybook-addons"
