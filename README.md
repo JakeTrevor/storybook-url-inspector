@@ -2,6 +2,36 @@
 
 Inspect URLs when they are modified by components
 
+## Usage
+
+Start by installing the package:
+
+`npm i storybook-addon-url-inspector`
+
+Then add it to the list of addons:
+
+```js
+// .storybook/main.js
+module.exports = {
+  addons: [
+    // ... other addons
+    "storybook-addon-url-inspector",
+  ],
+};
+```
+
+Finally, whenever you wish to use the inspector, add the "enabled" parameter. You can do this by story or by component as below:
+
+```js
+//component.stories.js
+export let story = Template.bind({});
+story.parameters = {
+  URLInspector: {
+    enabled: true,
+  },
+};
+```
+
 ## Motivation
 
 [Deep links](https://www.adjust.com/glossary/deep-linking/) are a very attractive feature for a app to have. But when you use modern web tools like react (or others) it doesn't happen automatically.
@@ -12,6 +42,17 @@ This is not generally a complicated task, and you might well build your own tool
 
 ## Function
 
-Unfortunately, there is no event listener for window.location changes - if you know of one, please let me know. So, as of right now, the URL is tracked via polling. This _shouldn't_ have a very significant impact on performance, but please be aware that it might.
+Unfortunately, there is no event listener for window.location changes - if you know of one, please let me know. So, as of right now, the URL is tracked via polling. This _shouldn't_ have a very significant impact on performance as it doesn't poll all that often, but please be aware that it might.
 
-I am working on features to allow you to adjust the polling frequency and to turn it off with a button on the toolbar.
+You can specify the polling frequency (in milliseconds) as a parameter (example below). It defaults to 50ms when unspecified.
+
+```js
+//component.stories.js
+export let story = Template.bind({});
+story.parameters = {
+  URLInspector: {
+    enabled: true,
+    timeout: 100, // halve polling frequency
+  },
+};
+```

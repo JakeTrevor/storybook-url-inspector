@@ -8,6 +8,6 @@
  *
  * https://storybook.js.org/docs/react/writing-stories/decorators#gatsby-focus-wrapper
  */
-import { URLObserver } from "../URLObserver";
+import URLObserver from "../URLObserver";
 
 export const decorators = [URLObserver];
